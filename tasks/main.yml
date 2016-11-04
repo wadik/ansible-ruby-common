@@ -29,6 +29,9 @@
     - libssl-dev
     - libyaml-dev
     - zlib1g-dev
+    - libncurses-dev
+    - libffi-dev
+    - libgdbm3
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Install yum Ruby dependencies
@@ -70,4 +73,5 @@
   file: path=/usr/local/bin/{{ item }}
         src={{ ruby_location }}/bin/{{ item }}
         state=link
+        force=true
   with_items: ruby_symlinks
