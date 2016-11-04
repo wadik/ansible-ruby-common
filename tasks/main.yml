@@ -24,7 +24,11 @@
 - name: Install APT Ruby dependencies
   apt: pkg={{ item }}
        state=present
-  with_items: ruby_apt_dependencies
+  with_items:
+    - libreadline-dev
+    - libssl-dev
+    - libyaml-dev
+    - zlib1g-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Install yum Ruby dependencies
